@@ -14638,8 +14638,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <p><font size=3>The main takeaways from this notebook:</p>
 <ul>
 <li>Preprocess and visualize the dataset</li>
-<li>Build two baseline models</li>
-<li>Data augmnentation, dropout, adding layers, changing optimizer, early stopping, learning rate schedule and unfreezeing pretrained layers are used</li>
+<li>Build two baseline models and fine-tune them</li>
+<li>Data augmnentation, dropout, adding layers, changing optimizer, early stopping, learning rate schedule and unfreezing pretrained layers are used</li>
 <li>Evaluate the train accuracy, validation accuracy, test accuracy of models before and after fine-tuning</li>
 <li>Evaluate the train loss, validation loss, test loss of models before and after fine-tuning</font></li>
 </ul>
@@ -14672,10 +14672,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 &nbsp;&nbsp;&nbsp;&nbsp;1. Data Preprocessing<br>
 &nbsp;&nbsp;&nbsp;&nbsp;2. Data Visualization<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3. Model 1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4. Fine-tune Model 1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;5. Build a CNN model by transfer learning (VGG16 model 1)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;6. Fine-tune the VGG model (VGG16 model 2)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;7. Fine-tune the VGG model with learning rate schedule (VGG16 model 3)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4. Model 2: Fine-tune the Model 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;5. VGG16 Model 1: Build a CNN Model by Transfer Learning<br>
+&nbsp;&nbsp;&nbsp;&nbsp;6. VGG16 Model 2: Fine-tune the VGG16 Model 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;7. VGG16 Model 3: Fine-tune the VGG16 Model 2 with Learning Rate Schedule and Unfreezing Pretrained Layers<br>
+&nbsp;&nbsp;&nbsp;&nbsp;8. Summary<br>
 
 </div>
 </div>
@@ -15808,7 +15809,7 @@ Test loss: 0.106
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="4.-Fine-tune-the-Model-1"><b>4. Fine-tune the Model 1</b><a class="anchor-link" href="#4.-Fine-tune-the-Model-1">&#182;</a></h3>
+<h3 id="4.-Model-2:-Fine-tune-the-Model-1"><b>4. Model 2: Fine-tune the Model 1</b><a class="anchor-link" href="#4.-Model-2:-Fine-tune-the-Model-1">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -15819,7 +15820,7 @@ Test loss: 0.106
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font size=3>To fine-tune the above model 1, we made following modification:</p>
+<p><font size=3>To fine-tune the above Model 1, we made following modification and train a Model 2:</p>
 <ul>
 <li>Data augmentation</li>
 <li>Add more <code>Dense</code> layer after <code>Flatten</code> layer</li>
@@ -16177,7 +16178,7 @@ jp-needs-light-background
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font size=3>From the above evaluation, the validation loss generally keeps decreasing until epoch 29 and starts to increase after epoch 29. For the accuracy, both the training and validation accuary are close and keep increasing steadily. <br><br>The model of epoch 29 is saved and used to predict the test_dataset. The test accuracy and loss is 0.973 and 0.091 respectively. <br><br> Compared to the result in section 3, the modifications in section 4 improve the model significantly.</font></p>
+<p><font size=3>From the above evaluation, the validation loss generally keeps decreasing until epoch 29 and starts to increase after epoch 29. For the accuracy, both the training and validation accuary are close and keep increasing steadily. <br><br>The model of epoch 29 is saved and used to predict the test_dataset. The test accuracy and loss is 0.973 and 0.091 respectively. <br><br> Compared to the result in Section 3, the modifications in Section 4 improve the model significantly.</font></p>
 
 </div>
 </div>
@@ -16231,7 +16232,7 @@ Test loss: 0.091
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="5.-Build-a-CNN-model-by-transfer-learning-(VGG16-model-1)"><b>5. Build a CNN model by transfer learning (VGG16 model 1)</b><a class="anchor-link" href="#5.-Build-a-CNN-model-by-transfer-learning-(VGG16-model-1)">&#182;</a></h3>
+<h3 id="5.-VGG16-Model-1:-Build-a-CNN-Model-by-Transfer-Learning"><b>5. VGG16 Model 1: Build a CNN Model by Transfer Learning</b><a class="anchor-link" href="#5.-VGG16-Model-1:-Build-a-CNN-Model-by-Transfer-Learning">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -16243,7 +16244,7 @@ Test loss: 0.091
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><font size=3>The architecture and compilation of the below transfer learning model are taken from <font color=red><b>chapter08_intro-to-dl-for-computer-vision.ipynb</b></font>. <br><br>
-<font size=3>The VGG convolutional base was instantiated and freezed</font>. <br><br></p>
+<font size=3>The VGG convolutional base was instantiated and freezed</font>.</p>
 
 </div>
 </div>
@@ -16635,7 +16636,7 @@ Test loss: 2.222
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font size=3>From the above evaluation, the validation loss keeps constant until epoch 10 and starts to slightly increase. On the other hand, the training accuracy keeps increasing steadily. <br><br>The model of epoch X is saved and used to predict the test_dataset. The test accuracy and loss is 0.967 and 2.222 respectively. <br><br> Compared to the previous model, the test loss of VGG model is relatively high.</font></p>
+<p><font size=3>From the above evaluation, the validation loss keeps constant until epoch 10 and starts to slightly increase. On the other hand, the training accuracy keeps increasing steadily. <br><br>The model of epoch 3 is saved and used to predict the test_dataset. The test accuracy and loss is 0.967 and 2.222 respectively. <br><br> Compared to the previous model, the test loss of VGG model is relatively high.</font></p>
 
 </div>
 </div>
@@ -16647,7 +16648,7 @@ Test loss: 2.222
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="6.-Fine-tune-the-VGG-model-(VGG16-model-2)"><b>6. Fine-tune the VGG model (VGG16 model 2)</b><a class="anchor-link" href="#6.-Fine-tune-the-VGG-model-(VGG16-model-2)">&#182;</a></h3>
+<h3 id="6.-VGG16-Model-2:-Fine-tune-the-VGG16-Model-1"><b>6. VGG16 Model 2: Fine-tune the VGG16 Model 1</b><a class="anchor-link" href="#6.-VGG16-Model-2:-Fine-tune-the-VGG16-Model-1">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -16658,13 +16659,25 @@ Test loss: 2.222
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font size=3>To fine-tune the above VGG model 1, we made following modification:</p>
+<p><font size=3>To fine-tune the above VGG16 model 1, we made following modification:</p>
 <ul>
 <li>Data augmentation</li>
 <li>Use <code>adam</code> optimizer</li>
 <li>Introduce early stopping in callbacks</li>
 </ul>
 </font>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><font size=3>The reasons of using above modification are same as the reasons mentioned in Section 4.</font></p>
 
 </div>
 </div>
@@ -16974,7 +16987,7 @@ Test loss: 1.974
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><font size=3>From the above evaluation, the validation loss decreases before the 8th epoch. After that, the validation loss slightly increases and there is a drop in validation accuracy.<br><br>
-The model of epoch X is saved and used to predict the test_dataset. The test accuracy and loss is 0.970 and 1.974 respectively. An improvement in test loss can be found after the fine-tuning.</font></p>
+The model of epoch 8 is saved and used to predict the test_dataset. The test accuracy and loss is 0.970 and 1.974 respectively. An improvement in test loss can be found after the fine-tuning.</font></p>
 
 </div>
 </div>
@@ -16986,7 +16999,7 @@ The model of epoch X is saved and used to predict the test_dataset. The test acc
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="7.-Fine-tune-the-VGG-model-with-learning-rate-schedule-(VGG16-model-3)"><b>7. Fine-tune the VGG model with learning rate schedule (VGG16 model 3)</b><a class="anchor-link" href="#7.-Fine-tune-the-VGG-model-with-learning-rate-schedule-(VGG16-model-3)">&#182;</a></h3>
+<h3 id="7.-VGG16-Model-3:-Fine-tune-the-VGG16-Model-2-with-Learning-Rate-Schedule-and-Unfreezing-Pretrained-Layers"><b>7. VGG16 Model 3: Fine-tune the VGG16 Model 2 with Learning Rate Schedule and Unfreezing Pretrained Layers</b><a class="anchor-link" href="#7.-VGG16-Model-3:-Fine-tune-the-VGG16-Model-2-with-Learning-Rate-Schedule-and-Unfreezing-Pretrained-Layers">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -16997,13 +17010,13 @@ The model of epoch X is saved and used to predict the test_dataset. The test acc
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><font size=3>To futher fine-tune the VGG model 2, we made following modification:</p>
+<p><font size=3>To futher fine-tune the VGG16 Model 2, we made following modification:</p>
 <ul>
 <li>Freeze the base layer until the forth from the end</li>
-<li>Introduce <code>learning rate scheduler</code></li>
+<li>Introduce learning rate scheduler</li>
 </ul>
 </font>
-<p><font size=3>Below exponential decay function is taken from Chapter 11 of Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow (3nd edition, Aurélien Géron).</font></p>
+<p><font size=3>Below exponential decay function is taken from <font color=red><b>Chapter 11 of Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow (3nd edition, Aurélien Géron)</b></font>.</font></p>
 
 </div>
 </div>
@@ -17344,7 +17357,7 @@ Test loss: 1.064
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><font size=3>From the above evaluation, the validation loss decreases before the 22nd epoch. After that, the validation loss slightly increases and there is a drop in validation accuracy. Overall the training accuracy increases gradually.<br><br>
-The model of epoch X is saved and used to predict the test dataset. The test accuracy is 0.970, while the test loss improved from 1.974 to 1.064. An improvement in test loss can be found after the fine-tuning.<br><br></p>
+The model of epoch 22 is saved and used to predict the test dataset. The test accuracy is 0.970, while the test loss improved from 1.974 to 1.064. An improvement in test loss can be found after the fine-tuning.<br><br></p>
 </font>
 
 </div>
@@ -17357,56 +17370,38 @@ The model of epoch X is saved and used to predict the test dataset. The test acc
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Transfer-Learning-test-result-summary">Transfer Learning test result summary<a class="anchor-link" href="#Transfer-Learning-test-result-summary">&#182;</a></h1><table>
-<thead>
-<tr>
-  <th>Model</th>
-  <th>Data Augmentation</th>
-  <th>Early Stopping</th>
-  <th>Freeze layers</th>
-  <th>Optimizer</th>
-  <th>Initial Learning Rate</th>
-  <th>Learning rate schedule</th>
-  <th>Test Accuracy</th>
-  <th>Test loss</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>1</td>
-  <td>No</td>
-  <td>No</td>
-  <td>All</td>
-  <td>RMSprop</td>
-  <td>0.001</td>
-  <td>No</td>
-  <td>0.967</td>
-  <td>2.222</td>
-</tr>
-<tr>
-  <td>2</td>
-  <td>Yes</td>
-  <td>Yes</td>
-  <td>All</td>
-  <td>Adam</td>
-  <td>0.001</td>
-  <td>No</td>
-  <td>0.970</td>
-  <td>1.974</td>
-</tr>
-<tr>
-  <td>3</td>
-  <td>Yes</td>
-  <td>Yes</td>
-  <td>Freeze until the 4th from last</td>
-  <td>Adam</td>
-  <td>1e-5</td>
-  <td>Yes</td>
-  <td>0.970</td>
-  <td>1.064</td>
-</tr>
-</tbody>
-</table>
+<h3 id="8.-Summary"><b>8. Summary</b><a class="anchor-link" href="#8.-Summary">&#182;</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><font size=3>The test accuracy and loss of Model 1 in Section 3 is 0.963 and 0.106 respectively. <br><br>
+The test accuracy and loss of Model 2 in Section 4 is 0.973 and 0.091 respectively.<br><br>
+<font size=3>The summary of all models using transfer learning:</font></p>
+<br>
+| VGG16 Model | Data Augmentation | Early Stopping | Freeze layers | Optimizer | Initial Learning Rate | Learning rate schedule | Test Accuracy | Test loss |
+|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| 1 | No | No | All | RMSprop | 0.001 | No | 0.967 | 2.222 |
+| 2 | Yes | Yes | All | Adam | 0.001 | No | 0.970 | 1.974 |
+| 3 | Yes | Yes | Freeze until the 4th from last | Adam | 1e-5 | Yes | 0.970 | 1.064 |
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><font size=3>The Model 2 in Section 4 outperforms all the models using transfer learning. The possible reason is that VGG16 is already an older model. Changing to other newer pretrained models may improve the performance in transfer learning.</font></p>
 
 </div>
 </div>
