@@ -9,7 +9,7 @@ In this project, two CNN models will be built for classifying the healthy lungs 
 After building the models, we will perform fine-tuning to the models by different techniques, like early stopping, learning rate schedule, unfreezing pretrained layers, etc.
 
 # Website
-https://jclee967.github.io/AASD4015-project1/
+https://jclee967.github.io/XRay-Classification-Project/
 
 # Dataset
 https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
